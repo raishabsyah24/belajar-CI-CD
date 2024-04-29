@@ -1,4 +1,4 @@
-name: CD
+name: remote ssh command
 on: [push]
 jobs:
 
@@ -11,11 +11,6 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        port: 22
-        script: |
-           cd ~/home/example/apps/belajar-CI-CD
-           git pull origin master
-           git status
-           npm install --onlyprod
-           npm start
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: whoami
